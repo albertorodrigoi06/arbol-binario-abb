@@ -1,0 +1,27 @@
+Inorden:
+20 30 40 50 60 70 80 
+Preorden:
+50 30 20 40 70 60 80 
+Postorden:
+20 40 30 60 80 70 50 
+
+BÚSQUEDA
+La clave 40 se encontró.
+La clave 90 no se encontró.
+
+MÍNIMO
+Mínimo del subárbol con raíz 70: 60
+Mínimo del árbol completo: 20
+
+ELIMINACIÓN
+Después de eliminar 20 (hoja)
+30 40 50 60 70 80 
+Después de eliminar 70 (dos hijos)
+30 40 50 60 80 
+Después de eliminar 50 (raíz)
+30 40 60 80 
+Después de eliminar 99 (no existe)
+30 40 60 80 
+Nueva raíz: 60
+Preorden final:
+60 30 40 80 
