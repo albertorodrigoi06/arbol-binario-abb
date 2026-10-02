@@ -1,3 +1,5 @@
+// Actividad: Árbol Binario de Búsqueda
+
 // Clase Nodo
 class Nodo {
     int clave;
