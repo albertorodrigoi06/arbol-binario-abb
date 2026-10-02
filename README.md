@@ -2,7 +2,7 @@
 
 En esta actividad completé los métodos de búsqueda, eliminación y el método auxiliar para encontrar el mínimo en un árbol binario de búsqueda en Java. Abajo están el dibujo del árbol, el código, las capturas de las pruebas y las respuestas a las preguntas.
 
-Para ejecutarlo:
+Para correrlo:
 
 ```
 javac ArbolBinario.java
