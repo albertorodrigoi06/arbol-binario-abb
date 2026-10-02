@@ -56,11 +56,20 @@ O sea, quedan ordenados de menor a mayor.
 
 ```java
 private boolean buscarRec(Nodo raiz, int clave) {
-    if (raiz == null) return false;          // no está
-    if (clave == raiz.clave) return true;    // la encontré
-    if (clave < raiz.clave)
-        return buscarRec(raiz.izquierdo, clave);  // busco a la izquierda
-    return buscarRec(raiz.derecho, clave);        // busco a la derecha
+    // si llego a null es porque no está
+    if (raiz == null) {
+        return false;
+    }
+    // si es igual la encontré
+    if (clave == raiz.clave) {
+        return true;
+    }
+    // si es menor busco a la izquierda, si no a la derecha
+    if (clave < raiz.clave) {
+        return buscarRec(raiz.izquierdo, clave);
+    } else {
+        return buscarRec(raiz.derecho, clave);
+    }
 }
 ```
 
@@ -83,19 +92,29 @@ La búsqueda podría irse para el lado equivocado y decir que la clave no está 
 
 ```java
 private Nodo eliminarRec(Nodo raiz, int clave) {
-    if (raiz == null) return null;  // no existe, no hago nada
+    // si no existe no hago nada
+    if (raiz == null) {
+        return null;
+    }
 
+    // primero busco el nodo
     if (clave < raiz.clave) {
         raiz.izquierdo = eliminarRec(raiz.izquierdo, clave);
     } else if (clave > raiz.clave) {
         raiz.derecho = eliminarRec(raiz.derecho, clave);
     } else {
         // lo encontré
-        // si es hoja o tiene un solo hijo
-        if (raiz.izquierdo == null) return raiz.derecho;
-        if (raiz.derecho == null) return raiz.izquierdo;
 
-        // si tiene dos hijos: pongo el menor del lado derecho
+        // caso 1 y 2: es hoja o tiene un solo hijo
+        if (raiz.izquierdo == null) {
+            return raiz.derecho;
+        }
+        if (raiz.derecho == null) {
+            return raiz.izquierdo;
+        }
+
+        // caso 3: tiene dos hijos
+        // pongo el menor del lado derecho en este nodo
         raiz.clave = minimoValor(raiz.derecho);
         // y borro ese valor de donde estaba
         raiz.derecho = eliminarRec(raiz.derecho, raiz.clave);
@@ -144,10 +163,11 @@ La misma del ABB: menores a la izquierda y mayores a la derecha. Lo comprobé co
 ## 9. Método auxiliar: encontrar el mínimo
 
 ```java
-private int minimoValor(Nodo raiz) {
+public int minimoValor(Nodo raiz) {
     Nodo actual = raiz;
-    while (actual.izquierdo != null)
+    while (actual.izquierdo != null) {
         actual = actual.izquierdo;
+    }
     return actual.clave;
 }
 ```
